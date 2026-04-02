@@ -7,8 +7,9 @@ import gdown
 
 st.title('Movies Recommendation System')
 
-movies_file_id = "1q1kVzsvKJ4nJH_8JkdJvERtdU94Y_mkG"
-similarity_file_id = "1Xq8Q6b62kQhh1miuMUUqLkf-k8PH13A6"
+api_key = st.secrets["TMDB_API_KEY"]
+movies_file_id = st.secrets["MOVIES_FILE_ID"]
+similarity_file_id = st.secrets["SIMILARITY_FILE_ID"]
 
 movies_url = f"https://drive.google.com/uc?id={movies_file_id}"
 similarity_url = f"https://drive.google.com/uc?id={similarity_file_id}"
@@ -29,7 +30,7 @@ selected_movie = st.selectbox('Select a movie', movies['title'])
 
 def fetch_poster(movie_id):
     response = requests.get(
-        f'https://api.themoviedb.org/3/movie/{movie_id}?api_key=aa60fd3cecf966eba363e707215770e3'
+        f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}'
     )
     data = response.json()
     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
