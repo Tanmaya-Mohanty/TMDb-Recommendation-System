@@ -7,9 +7,9 @@ import gdown
 
 st.title('Movies Recommendation System')
 
-api_key = st.secrets["TMDB_API_KEY"]
-movies_file_id = st.secrets["MOVIES_FILE_ID"]
-similarity_file_id = st.secrets["SIMILARITY_FILE_ID"]
+api_key = os.getenv("TMDB_API_KEY")
+movies_file_id = os.getenv("MOVIES_FILE_ID")
+similarity_file_id = os.getenv("SIMILARITY_FILE_ID")
 
 movies_url = f"https://drive.google.com/uc?id={movies_file_id}"
 similarity_url = f"https://drive.google.com/uc?id={similarity_file_id}"
